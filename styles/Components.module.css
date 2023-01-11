@@ -1,0 +1,20 @@
+/* NAVBAR */
+.nav_main{
+    background-color: black;
+    width: 100%;
+}
+
+.container_fluid {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 10px;
+}
+
+.nav_main a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav_item{
+    padding: 0px 1.5rem;
+}
