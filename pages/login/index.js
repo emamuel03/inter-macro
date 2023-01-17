@@ -2,7 +2,7 @@ import styles from '../../styles/Logger.module.css';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { auth } from '../../firebase.config';
 import Notification from '../../components/Notification';
 
 export default function Login() {
