@@ -4,7 +4,7 @@ import styles from '../styles/Components.module.css'
 import AuthContext from '../context/AuthContext'
 import { useAuthUser } from '../hooks/useAuthUser'
 import { signOut } from 'firebase/auth'
-import { auth } from "../firebase";
+import { auth } from "../firebase.config";
 
 function Navbar() {
     useAuthUser();

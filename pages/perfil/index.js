@@ -4,6 +4,7 @@ export default function index() {
   return (
     <>
     <h1>Mi perfil</h1>
+    
     </>
   )
 }
