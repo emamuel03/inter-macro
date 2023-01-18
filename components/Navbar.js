@@ -39,7 +39,10 @@ function Navbar() {
                  {isLogged === true && (
                     <>
                     <div className={styles.nav_item}>
-                        <Link href="/login"><h5>{current.email}</h5></Link>
+                        <Link href="/dashboards"><h5>Paneles</h5></Link>
+                    </div>
+                    <div className={styles.nav_item}>
+                        <Link href="/perfil"><h5>{current.email}</h5></Link>
                     </div>
                     <button onClick={logOut}>Cerrar Sesión</button>
                     </>
