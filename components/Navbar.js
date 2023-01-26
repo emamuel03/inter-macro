@@ -20,11 +20,11 @@ function Navbar() {
     }
 
     useEffect(() => {
-      auth.onAuthStateChanged((u)=>{
-        setCurrent(u)
-      })
-    }, [])  
-    
+        auth.onAuthStateChanged((u) => {
+            setCurrent(u)
+        })
+    }, [])
+
     return (
         <nav className={styles.nav_main}>
             <div className={styles.container_fluid}>
@@ -36,15 +36,22 @@ function Navbar() {
                         <Link href="/login"><h5>Iniciar Sesión</h5></Link>
                     </div>
                 )}
-                 {isLogged === true && (
+                {isLogged === true && (
                     <>
-                    <div className={styles.nav_item}>
-                        <Link href="/dashboards"><h5>Paneles</h5></Link>
-                    </div>
-                    <div className={styles.nav_item}>
-                        <Link href="/perfil"><h5>{current.email}</h5></Link>
-                    </div>
-                    <button onClick={logOut}>Cerrar Sesión</button>
+                        <div className={styles.nav_item}>
+                            <Link href="/dashboards"><h5>Paneles</h5></Link>
+                        </div>
+                        {current.role === 'Admin' && (
+                            <>
+                                <div className={styles.nav_item}>
+                                    <Link href="/register"><h5>Crear Usuario</h5></Link>
+                                </div>
+                            </>
+                        )}
+                        <div className={styles.nav_item}>
+                            <Link href="/perfil"><h5>{current.email}</h5></Link>
+                        </div>
+                        <button onClick={logOut}>Cerrar Sesión</button>
                     </>
                 )}
             </div>
