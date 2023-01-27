@@ -4,12 +4,19 @@ import styles from '../styles/Components.module.css'
 import AuthContext from '../context/AuthContext'
 import { useAuthUser } from '../hooks/useAuthUser'
 import { signOut } from 'firebase/auth'
-import { auth } from "../firebase.config";
+import { auth, db } from "../firebase.config";
+import { doc, getDoc } from "firebase/firestore";
 
 function Navbar() {
     useAuthUser();
     const { isLogged } = useContext(AuthContext);
-    const [current, setCurrent] = useState();
+    const [current, setCurrent] = useState({
+        email: "",
+        firstname: "",
+        lastname: "",
+        department: "",
+        role: "",
+    });
 
     const logOut = async () => {
         try {
@@ -21,7 +28,10 @@ function Navbar() {
 
     useEffect(() => {
         auth.onAuthStateChanged((u) => {
-            setCurrent(u)
+            const docref = doc(db,"user",u.uid);
+            getDoc(docref).then((c)=>{
+                setCurrent(c.data());
+            })
         })
     }, [])
 
@@ -49,7 +59,7 @@ function Navbar() {
                             </>
                         )}
                         <div className={styles.nav_item}>
-                            <Link href="/perfil"><h5>{current.email}</h5></Link>
+                            <Link href="/perfil"><h5>{current.firstname} {current.lastname}</h5></Link>
                         </div>
                         <button onClick={logOut}>Cerrar Sesión</button>
                     </>

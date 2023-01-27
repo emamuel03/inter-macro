@@ -56,6 +56,7 @@ export default function Login() {
                         name='email'
                         type='email'
                         placeholder='Email'
+                        autoComplete='off'
                         onChange={changeUser}
                     />
                 </div>
